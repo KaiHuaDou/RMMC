@@ -1,4 +1,7 @@
-﻿namespace RMMC;
+﻿using System;
+using System.Collections.Generic;
+
+namespace RMMC;
 
 public class Program
 {

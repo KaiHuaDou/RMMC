@@ -1,0 +1,28 @@
+name: .NET Build
+
+on:
+  push:
+    branches: ['main']
+
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
+
+      - name: Build App
+        run: dotnet publish -p:PublishProfile=FolderProfile
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: RMMC-win-x64
+          path: ./bin/publish/*
